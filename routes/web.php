@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\CategoriesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,5 +20,5 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-
+Route::get('/show-categories',[CategoriesController::class, 'index'])->middleware(['auth', 'verified'])->name('show-categories');
 require __DIR__.'/auth.php';
