@@ -21,5 +21,5 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/show-categories',[CategoriesController::class, 'index'])->middleware(['auth', 'verified'])->name('show-categories');
-Route::get('/show-lesson/{id}',[CategoriesController::class, 'showlessons','id'])->middleware(['auth', 'verified'])->name('show-lessons');
+Route::get('/show-lesson/{title}',[CategoriesController::class, 'showlessons','title'])->middleware(['auth', 'verified'])->name('show-lessons');
 require __DIR__.'/auth.php';

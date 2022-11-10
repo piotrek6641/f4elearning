@@ -12,9 +12,9 @@ class CategoriesController extends Controller
         $categories= Category::all();
         return view('show-categories')->with('categories', $categories);
     }
-    public function showlessons($id)
+    public function showlessons($title)
     {
-        $categories= Category::where('id',$id)->get();
+        $categories= Category::where('title',$title)->get();
         return view('show-lessons')->with('categories', $categories);
     }
 }
