@@ -11,6 +11,9 @@
                 <div class="p-6 bg-white border-b border-gray-200 min-h-screen">
                     @foreach($categories as $category)
                             <h1 class="btn"> {{$category->title}} </h1>
+                        @foreach($category->lessons as $lesson)
+                            {{$lesson->title}}
+                        @endforeach
                     @endforeach
                 </div>
             </div>
