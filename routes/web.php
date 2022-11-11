@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\LessonsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,4 +23,5 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/show-categories',[CategoriesController::class, 'index'])->middleware(['auth', 'verified'])->name('show-categories');
 Route::get('/show-lesson/{title}',[CategoriesController::class, 'showlessons','title'])->middleware(['auth', 'verified'])->name('show-lessons');
+Route::get('/show-lessons/{title}',[LessonsController::class, 'show','title'])->middleware(['auth', 'verified'])->name('show-lesson');
 require __DIR__.'/auth.php';

@@ -9,12 +9,9 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200 min-h-screen">
-                    @foreach($categories as $category)
 
-                        @foreach($category->lessons as $lesson)
-                            <a href="{{route('show-lesson',$lesson->title)}}"> {{$lesson->title}} </a>
-                        @endforeach
-                    @endforeach
+                    {{$lesson->title}} </br>
+                        {{$lesson->description}}
                 </div>
             </div>
         </div>
