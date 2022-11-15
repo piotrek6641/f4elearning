@@ -17,11 +17,21 @@ use App\Http\Controllers\LessonsController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::middleware('auth')->group( function ()
+{
+    Route::get('/dashboard', function () {
+        return view('dashboard');})
+        ->name('dashboard');
+    Route::get('/show-categories',[CategoriesController::class, 'index'])->name('show-categories');
+    Route::get('/show-lesson/{title}',[CategoriesController::class, 'showlessons','title'])->name('show-lessons');
+    Route::get('/show-lessons/{title}',[LessonsController::class, 'show','title'])->name('show-lesson');
+});
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('/show-categories',[CategoriesController::class, 'index'])->middleware(['auth'])->name('show-categories');
-Route::get('/show-lesson/{title}',[CategoriesController::class, 'showlessons','title'])->middleware(['auth'])->name('show-lessons');
-Route::get('/show-lessons/{title}',[LessonsController::class, 'show','title'])->middleware(['auth'])->name('show-lesson');
+
+Route::middleware(['auth','IsAdmin'])->group(function(){
+    Route::get('/admin',function ()
+    {
+        return view('dashboard');
+    });
+});
 require __DIR__.'/auth.php';
