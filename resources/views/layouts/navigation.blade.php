@@ -18,6 +18,12 @@
                     <x-nav-link :href="route('show-categories')" :active="request()->routeIs('show-categories')">
                         {{ __('Show Categories') }}
                     </x-nav-link>
+                    @if( Auth::user()->is_admin )
+                        <x-nav-link :href="route('admin')" :active="request()->routeIs('admin')">
+                            {{ __('Admin panel') }}
+                        </x-nav-link>
+                    @endif
+
                 </div>
             </div>
 

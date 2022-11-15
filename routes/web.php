@@ -32,6 +32,6 @@ Route::middleware(['auth','IsAdmin'])->group(function(){
     Route::get('/admin',function ()
     {
         return view('dashboard');
-    });
+    })->name('admin');
 });
 require __DIR__.'/auth.php';
