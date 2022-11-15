@@ -12,6 +12,9 @@
                     <form method="get" action="{{route('add-category')}}">
                     <button class="btn"> add category</button>
                     </form>
+                    <form method="get" action="{{route('add-lesson')}}">
+                        <button class="btn"> add lesson</button>
+                    </form>
                 </div>
             </div>
         </div>
