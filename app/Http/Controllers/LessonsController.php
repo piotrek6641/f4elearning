@@ -8,10 +8,10 @@ use Illuminate\Http\Request;
 
 class LessonsController extends Controller
 {
-    public function show($title,$id)
+    public function show($title,$lessontitle)
     {
         $category= Category::where('title',$title)->get();
-        $lesson= Lesson::whereBelongsTo($category)->where('id',$id)->first();
+        $lesson= Lesson::whereBelongsTo($category)->where('title',$lessontitle)->first();
         return view('/lessons/show-lesson')->with('lesson',$lesson);
     }
     public function create()

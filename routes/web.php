@@ -24,7 +24,7 @@ Route::middleware('auth')->group( function ()
         ->name('dashboard');
     Route::get('/show-categories',[CategoriesController::class, 'index'])->name('show-categories');
     Route::get('/show-lesson/{title}',[CategoriesController::class, 'showlessons','title'])->name('show-lessons');
-    Route::get('/show-lesson/{title}/{id}',[LessonsController::class, 'show','title','id'])->name('show-lesson');
+    Route::get('/show-lesson/{title}/{lesson}',[LessonsController::class, 'show','title','lesson'])->name('show-lesson');
 });
 
 
