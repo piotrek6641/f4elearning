@@ -31,7 +31,9 @@ Route::middleware('auth')->group( function ()
 Route::middleware(['auth','IsAdmin'])->group(function(){
     Route::get('/admin',function ()
     {
-        return view('dashboard');
+        return view('admin');
     })->name('admin');
+    Route::get('/addcategory',[CategoriesController::class, 'create'])->name('add-category');
+    Route::post('/addcategory', [CategoriesController::class, 'store'])->name('store-category');
 });
 require __DIR__.'/auth.php';
