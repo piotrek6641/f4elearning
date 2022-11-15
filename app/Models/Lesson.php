@@ -12,5 +12,10 @@ class Lesson extends Model
     {
         return $this->belongsTo(Category::class);
     }
+    protected $fillable=[
+      'title',
+      'description',
+      'category_id'
+    ];
 
 }

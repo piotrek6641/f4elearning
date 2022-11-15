@@ -12,7 +12,7 @@
                     @foreach($categories as $category)
 
                         @foreach($category->lessons as $lesson)
-                            <a href="{{route('show-lesson',$lesson->title)}}"> {{$lesson->title}} </a>
+                            <a href="{{route('show-lesson',['title'=>$category->title,'id'=>$lesson->id])}}"> {{$lesson->title}} </a>
                         @endforeach
                     @endforeach
                 </div>
