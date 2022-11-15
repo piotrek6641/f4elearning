@@ -22,20 +22,27 @@ Route::middleware('auth')->group( function ()
     Route::get('/dashboard', function () {
         return view('dashboard');})
         ->name('dashboard');
-    Route::get('/show-categories',[CategoriesController::class, 'index'])->name('show-categories');
-    Route::get('/show-lesson/{title}',[CategoriesController::class, 'showlessons','title'])->name('show-lessons');
-    Route::get('/show-lesson/{title}/{lesson}',[LessonsController::class, 'show','title','lesson'])->name('show-lesson');
+    Route::prefix('show')->group(function()
+    {
+        Route::get('/',[CategoriesController::class, 'index'])->name('show-categories');
+        Route::get('/{title}',[CategoriesController::class, 'showlessons','title'])->name('show-lessons');
+        Route::get('/{title}/{lesson}',[LessonsController::class, 'show','title','lesson'])->name('show-lesson');
+    });
+
 });
 
 
 Route::middleware(['auth','IsAdmin'])->group(function(){
-    Route::get('/admin',function ()
-    {
-        return view('admin');
-    })->name('admin');
-    Route::get('/addcategory',[CategoriesController::class, 'create'])->name('add-category');
-    Route::post('/addcategory', [CategoriesController::class, 'store'])->name('store-category');
-    Route::get('/addlesson',[LessonsController::class, 'create'])->name('add-lesson');
-    Route::post('/addlesson',[LessonsController::class, 'store'])->name('store-lesson');
+    Route::prefix('admin')->group(function(){
+        Route::get('/',function ()
+        {
+            return view('admin');
+        })->name('admin');
+        Route::get('/addcategory',[CategoriesController::class, 'create'])->name('add-category');
+        Route::post('/addcategory', [CategoriesController::class, 'store'])->name('store-category');
+        Route::get('/addlesson',[LessonsController::class, 'create'])->name('add-lesson');
+        Route::post('/addlesson',[LessonsController::class, 'store'])->name('store-lesson');
+    });
+
 });
 require __DIR__.'/auth.php';
