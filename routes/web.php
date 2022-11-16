@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\MailController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\LessonsController;
+use App\Http\Controllers\EmailController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,4 +47,6 @@ Route::middleware(['auth','IsAdmin'])->group(function(){
     });
 
 });
+
+Route::get('send-mail', [EmailController::class, 'store']);
 require __DIR__.'/auth.php';
