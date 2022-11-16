@@ -27,7 +27,7 @@ Route::middleware('auth')->group( function ()
         Route::get('/',[CategoriesController::class, 'index'])->name('show-categories');
         Route::get('/{title}',[CategoriesController::class, 'showlessons','title'])->name('show-lessons');
         Route::get('/{title}/{lesson}',[LessonsController::class, 'show','title','lesson'])->name('show-lesson');
-        Route::get('/{title}/{lesson}/edit',[LessonsController::class, 'edit' ,'title','lesson'])->name('edit-lesson');
+        Route::get('/{title}/{lesson}/edit',[LessonsController::class, 'edit' ,'title','lesson'])->name('edit-lesson')->middleware('IsAdmin');
         Route::put('/{title}/{lesson}',[LessonsController::class, 'update','title','lesson'])->name('update-lesson')->middleware('IsAdmin');
     });
 });
