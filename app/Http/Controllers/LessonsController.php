@@ -36,4 +36,32 @@ class LessonsController extends Controller
 
         return to_route('add-lesson');
     }
+    public function edit($title,$lessontitle)
+    {
+        $category= Category::where('title',$title)->get();
+        $lesson= Lesson::whereBelongsTo($category)->where('title',$lessontitle)->first();
+        return view('/lessons/edit-lesson')->with('lesson',$lesson);
+    }
+    public function update(Request $request,$title,$lessontitle)
+    {
+        $category= Category::where('title',$title)->get();
+        $lesson= Lesson::whereBelongsTo($category)->where('title',$lessontitle)->first();
+        $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string', 'max:255'],
+
+        ],
+        [
+           'title.required'=>'title is required',
+            'description.required'=>'description is required'
+        ]);
+        $lesson->update([
+            'title' => $request->title,
+            'description' => $request->description,
+
+        ]);;
+        return back()->with('success', 'Lesson updated successfully');
+    }
+
+
 }

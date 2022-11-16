@@ -13,10 +13,10 @@ use App\Http\Controllers\LessonsController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::middleware('auth')->group( function ()
 {
     Route::get('/dashboard', function () {
@@ -27,10 +27,10 @@ Route::middleware('auth')->group( function ()
         Route::get('/',[CategoriesController::class, 'index'])->name('show-categories');
         Route::get('/{title}',[CategoriesController::class, 'showlessons','title'])->name('show-lessons');
         Route::get('/{title}/{lesson}',[LessonsController::class, 'show','title','lesson'])->name('show-lesson');
+        Route::get('/{title}/{lesson}/edit',[LessonsController::class, 'edit' ,'title','lesson'])->name('edit-lesson');
+        Route::put('/{title}/{lesson}',[LessonsController::class, 'update','title','lesson'])->name('update-lesson')->middleware('IsAdmin');
     });
-
 });
-
 
 Route::middleware(['auth','IsAdmin'])->group(function(){
     Route::prefix('admin')->group(function(){

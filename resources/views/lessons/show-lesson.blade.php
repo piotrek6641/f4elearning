@@ -12,6 +12,11 @@
 
                         {{$lesson->title}} </br>
                         {{$lesson->description}}
+                    @if( Auth::user()->is_admin)
+                        <form method="get" action="{{route('edit-lesson',['title'=>$lesson->category->title, 'lesson'=>$lesson->title])}}">
+                        <button class="btn" type="submit"> edit</button>
+                        </form>
+                    @endif
                 </div>
             </div>
         </div>
