@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MailController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\LessonsController;
@@ -20,7 +21,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware('auth')->group( function ()
+Route::middleware('auth','verified')->group( function ()
 {
     Route::get('/subscribe',[UserController::class, 'subscribe'])->name('subscribe');
     Route::get('/dashboard', function () {
@@ -46,9 +47,12 @@ Route::middleware(['auth','IsAdmin'])->group(function(){
         Route::post('/addcategory', [CategoriesController::class, 'store'])->name('store-category');
         Route::get('/addlesson',[LessonsController::class, 'create'])->name('add-lesson');
         Route::post('/addlesson',[LessonsController::class, 'store'])->name('store-lesson');
+
+        Route::get('/send-mail', [EmailController::class, 'index'])->name('show-email');
+        Route::post('/send-mail', [EmailController::class, 'store'])->name('send-email');
+
     });
 
 });
 
-Route::get('send-mail', [EmailController::class, 'store']);
 require __DIR__.'/auth.php';
