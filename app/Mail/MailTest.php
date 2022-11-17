@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 use App\Models\Lesson;
+use Illuminate\Http\Request;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -18,10 +19,10 @@ class MailTest extends Mailable
      *
      * @return void
      */
-
-    public function __construct()
+    public $request;
+    public function __construct(Request $request)
     {
-        //
+        $this->request = $request;
     }
 
     /**
@@ -32,7 +33,6 @@ class MailTest extends Mailable
     public function envelope()
     {
         return new Envelope(
-
             subject: 'Mail Test',
         );
     }
