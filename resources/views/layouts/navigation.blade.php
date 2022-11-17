@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <h1>F4E Learning</h1>
+                        F4E Learning
                     </a>
                 </div>
 

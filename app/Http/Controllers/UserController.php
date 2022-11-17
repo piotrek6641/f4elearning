@@ -19,6 +19,6 @@ class UserController extends Controller
             $user->update(['is_subscribed' => 0]);
 
         }
-        return view('dashboard');
+        return to_route('dashboard');
     }
 }

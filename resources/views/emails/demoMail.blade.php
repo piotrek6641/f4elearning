@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>F4Elearning</title>
+    <title>{{$request->title}}</title>
 </head>
 <body>
 
 
-{{$request->title}}
+
 {{$request->content}}
 </body>
 </html>
