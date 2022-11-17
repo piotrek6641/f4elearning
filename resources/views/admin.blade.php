@@ -15,6 +15,9 @@
                     <form method="get" action="{{route('add-lesson')}}">
                         <button class="btn"> add lesson</button>
                     </form>
+                    <form method="get" action="{{route('show-email')}}">
+                        <button class="btn"> send emails</button>
+                    </form>
                 </div>
             </div>
         </div>

@@ -6,6 +6,7 @@
 <body>
 
 
-<h1>Welcome to our service :)</h1>
+{{$request->title}}
+{{$request->content}}
 </body>
 </html>
