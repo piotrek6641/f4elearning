@@ -10,12 +10,25 @@ use App\Models\User;
 
 class EmailController extends Controller
 {
-    public function store()
+    public function index()
     {
-        $user = User::where('id',Auth::id())->first();
+        return view('emails.email-form');
+    }
+    public function store(Request $request)
+    {
+        $request->validate([
+           'title'=>['required','string','max:255'],
+            'content'=>['required','string']
 
-        // Ship the order...
+        ],
+        [
+            'title.require'=>'title is required',
+            'content.require'=>'content is required'
+        ]
 
-        Mail::to($user)->send(new MailTest());
+        );
+        $users = User::where('is_subscribed',1)->get();
+        Mail::to($users)->send(new MailTest($request));
+        return back()->with('success','email successfully sent');
     }
 }
