@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\LessonsController;
 use App\Http\Controllers\EmailController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,6 +22,7 @@ Route::get('/', function () {
 
 Route::middleware('auth')->group( function ()
 {
+    Route::get('/subscribe',[UserController::class, 'subscribe'])->name('subscribe');
     Route::get('/dashboard', function () {
         return view('dashboard');})
         ->name('dashboard');
