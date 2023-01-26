@@ -23,6 +23,9 @@
                             {{ __('Admin panel') }}
                         </x-nav-link>
                     @endif
+                    <x-nav-link :href="route('post-view')" :active="request()->routeIs('post-view')">
+                        {{ __('Posts') }}
+                    </x-nav-link>
 
                 </div>
             </div>
