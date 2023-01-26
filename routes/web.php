@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoriesController;
@@ -21,8 +22,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware('auth','verified')->group( function ()
+Route::middleware('auth',)->group( function ()
 {
+    Route::prefix('post')->group(function()
+    {
+        Route::get('/', [PostController::class,'index'])->name('post-view');
+        Route::get('/create-post', [PostController::class,'create'] )->name('create-post');
+        Route::post('/create-post',[PostController::class,'store'])->name('add-post');
+        Route::get('/{id}',[PostController::class,'show','id'])->name('show-post');
+    });
+
     Route::get('/subscribe',[UserController::class, 'subscribe'])->name('subscribe');
     Route::get('/dashboard', function () {
         return view('dashboard');})
@@ -36,7 +45,6 @@ Route::middleware('auth','verified')->group( function ()
         Route::put('/{title}/{lesson}',[LessonsController::class, 'update','title','lesson'])->name('update-lesson')->middleware('IsAdmin');
     });
 });
-
 Route::middleware(['auth','IsAdmin'])->group(function(){
     Route::prefix('admin')->group(function(){
         Route::get('/',function ()
@@ -50,7 +58,6 @@ Route::middleware(['auth','IsAdmin'])->group(function(){
 
         Route::get('/send-mail', [EmailController::class, 'index'])->name('show-email');
         Route::post('/send-mail', [EmailController::class, 'store'])->name('send-email');
-
     });
 
 });
