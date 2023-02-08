@@ -46,6 +46,10 @@
                     </x-slot>
 
                     <x-slot name="content">
+                        <x-dropdown-link :href="route('settings')">
+                            {{__('Settings')}}
+                        </x-dropdown-link>
+
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
@@ -55,6 +59,9 @@
                                                 this.closest('form').submit();">
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
+
+
+
                         </form>
                     </x-slot>
                 </x-dropdown>
@@ -77,6 +84,12 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('show-categories')" :active="request()->routeIs('show-categories')">
+                {{ __('Categories') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('post-view')" :active="request()->routeIs('post-view')">
+                {{ __('Posts') }}
             </x-responsive-nav-link>
         </div>
 
