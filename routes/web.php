@@ -24,6 +24,13 @@ Route::get('/', function () {
 
 Route::middleware('auth',)->group( function ()
 {
+    Route::get('/subscribe',[UserController::class, 'subscribe'])->name('subscribe');
+    Route::get('/dashboard', function () {
+        return view('dashboard');})
+        ->name('dashboard');
+    Route::get('/settings',function() {
+       return view('settings');
+    })->name('settings');
     Route::prefix('post')->group(function()
     {
         Route::get('/', [PostController::class,'index'])->name('post-view');
@@ -32,10 +39,6 @@ Route::middleware('auth',)->group( function ()
         Route::get('/{id}',[PostController::class,'show','id'])->name('show-post');
     });
 
-    Route::get('/subscribe',[UserController::class, 'subscribe'])->name('subscribe');
-    Route::get('/dashboard', function () {
-        return view('dashboard');})
-        ->name('dashboard');
     Route::prefix('show')->group(function()
     {
         Route::get('/',[CategoriesController::class, 'index'])->name('show-categories');
@@ -55,7 +58,6 @@ Route::middleware(['auth','IsAdmin'])->group(function(){
         Route::post('/addcategory', [CategoriesController::class, 'store'])->name('store-category');
         Route::get('/addlesson',[LessonsController::class, 'create'])->name('add-lesson');
         Route::post('/addlesson',[LessonsController::class, 'store'])->name('store-lesson');
-
         Route::get('/send-mail', [EmailController::class, 'index'])->name('show-email');
         Route::post('/send-mail', [EmailController::class, 'store'])->name('send-email');
     });
