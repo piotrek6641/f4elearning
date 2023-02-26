@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+<nav x-data="{ open: false }" class="bg-base-300 border-b border-primary">
     <!-- Primary Navigation Menu -->
     <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -16,7 +16,7 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                     <x-nav-link :href="route('show-categories')" :active="request()->routeIs('show-categories')">
-                        {{ __('Show Categories') }}
+                        {{ __('Learn') }}
                     </x-nav-link>
                     @if( Auth::user()->is_admin )
                         <x-nav-link :href="route('admin')" :active="request()->routeIs('admin')">
@@ -69,7 +69,7 @@
 
             <!-- Hamburger -->
             <div class="-mr-2 flex items-center sm:hidden">
-                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
+                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md  focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -91,10 +91,15 @@
             <x-responsive-nav-link :href="route('post-view')" :active="request()->routeIs('post-view')">
                 {{ __('Posts') }}
             </x-responsive-nav-link>
+            @if( Auth::user()->is_admin )
+                <x-responsive-nav-link :href="route('admin')" :active="request()->routeIs('admin')">
+                    {{ __('Admin panel') }}
+                </x-responsive-nav-link>
+            @endif
         </div>
 
         <!-- Responsive Settings Options -->
-        <div class="pt-4 pb-1 border-t border-gray-200">
+        <div class="pt-4 pb-1 border-t border-primary">
             <div class="px-4">
                 <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
                 <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
@@ -102,6 +107,7 @@
 
             <div class="mt-3 space-y-1">
                 <!-- Authentication -->
+
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
 
@@ -110,7 +116,11 @@
                                         this.closest('form').submit();">
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>
+
                 </form>
+                <x-responsive-nav-link :href="route('settings')">
+                    {{__('Settings')}}
+                </x-responsive-nav-link>
             </div>
         </div>
     </div>

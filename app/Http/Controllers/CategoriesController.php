@@ -35,7 +35,7 @@ class CategoriesController extends Controller
 
         ]);
 
-        return to_route('dashboard');
+        return back()->with('success','new category successfully added');
 
     }
 }

@@ -34,7 +34,7 @@ class LessonsController extends Controller
 
         ]);
 
-        return to_route('add-lesson');
+        return back()->with('success','lesson created successfully');
     }
     public function edit($title,$lessontitle)
     {

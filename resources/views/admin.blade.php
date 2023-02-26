@@ -1,25 +1,18 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+        <h2 class="font-semibold text-xl  leading-tight">
+            {{ __('Admin Panel') }}
         </h2>
     </x-slot>
+                <div class="flex flex-col gap-y-8">
+                    <a href="{{route('add-category')}}" class="text-center text-3xl p-5 rounded-md border-2 border-primary from-primary to-base-100 hover:border-primary-focus hover:bg-base-200">Add new category </a>
+                    <a href="#" class="text-center text-3xl p-5 border-2 border-primary rounded-md hover:bg-base-200">Edit categories </a>
+                    <a href="{{route('add-lesson')}}" class="text-center text-3xl p-5 rounded-md border-2 border-primary  hover:bg-base-200">Add new lesson </a>
+                    <a href="{{route('show-email')}}" class="text-center text-3xl p-5 rounded-md border-2 border-primary hover:bg-base-200">Send Newsletter emails </a>
+                    <a href="#" class="text-center text-3xl p-5 border-2 border-primary  hover:bg-base-200">Menage Users </a>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200 min-h-screen">
-                    <form method="get" action="{{route('add-category')}}">
-                    <button class="btn"> add category</button>
-                    </form>
-                    <form method="get" action="{{route('add-lesson')}}">
-                        <button class="btn"> add lesson</button>
-                    </form>
-                    <form method="get" action="{{route('show-email')}}">
-                        <button class="btn"> send emails</button>
-                    </form>
+
+
                 </div>
-            </div>
-        </div>
-    </div>
+
 </x-app-layout>

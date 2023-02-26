@@ -1,5 +1,5 @@
 @if(Session::has('success'))
-    <div class="alert alert-success" id="alert">
+    <div class="alert alert-success rounded-none" id="alert">
         {{ Session::get('success') }}
         @php
             Session::forget('success');

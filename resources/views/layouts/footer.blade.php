@@ -1,4 +1,4 @@
-<footer class="footer footer-center p-10 bg-gray-400 text-primary-content">
+<footer class="footer footer-center p-10 bg-base-300 ">
     <div>
         F4E Learning
         <p class="font-bold">

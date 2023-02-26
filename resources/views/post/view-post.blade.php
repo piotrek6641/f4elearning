@@ -1,20 +1,17 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('Post') }}
         </h2>
     </x-slot>
 
-    <div class="py-4">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <form method="get" action="{{route('post-view')}}"><button class="mb-4 ml-4 sm:ml-0 flex items-center gap-2" >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
-                    </svg>
-                    Go back
-                </button> </form>
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200 ">
+
+            <form method="get" action="{{route('post-view')}}">
+                <x-back-button>
+
+                </x-back-button>
+            </form>
+
                         <div class="w-full  grid grid-cols-4 p-2 mb-2">
                             <div class="col-span-4 text-right flex justify-end mb-5 text-gray-500">
                                 <div class="px-5">Author: {{$post->author->name}} </div>
@@ -27,11 +24,6 @@
                        </div>
 
                                <div class="col-span-4">{{$post->content}}</div>
-
-
-
-
-
 
                 </div>
                     <div class="btn-group min-w-full col-span-4 flex justify-end">
@@ -64,8 +56,5 @@
                             </button></div>
 
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
 </x-app-layout>
