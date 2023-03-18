@@ -50,8 +50,8 @@
                     </a>
                 @endif
                     @if (Route::has('password.request'))
-                        <a class="underline text-sm hover:text-primary-focus" href="{{ route('password.request') }}">
-                            {{ __('Already have an account?') }}
+                        <a class="underline text-sm hover:text-primary-focus" href="{{ route('register') }}">
+                            {{ __('Not registered yet?') }}
                         </a>
                     @endif
 

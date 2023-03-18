@@ -11,7 +11,9 @@
 
                 </x-back-button>
             </form>
-
+@if(Auth::user()->is_admin)
+    <form method="post" action="{{route('remove-post',$post->id)}}"> @csrf <button type="submit"> remove post </button> </form>
+    @endif
                         <div class="w-full  grid grid-cols-4 p-2 mb-2">
                             <div class="col-span-4 text-right flex justify-end mb-5 text-gray-500">
                                 <div class="px-5">Author: {{$post->author->name}} </div>

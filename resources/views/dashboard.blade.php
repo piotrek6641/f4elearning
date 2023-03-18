@@ -7,5 +7,13 @@
 
 
 
+    <button id="color"> change color scheme </button>
+
+    <script>
+        document.getElementById('color').addEventListener('click',()=>
+        {
+            document.getElementById('html').setAttribute('data-theme','light')
+        })
+    </script>
 
 </x-app-layout>

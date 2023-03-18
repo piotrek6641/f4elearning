@@ -4,14 +4,14 @@
             {{ __('Creating Post') }}
         </h2>
     </x-slot>
-
-
     <form method="get" action="{{route('post-view')}}"><x-back-button> </x-back-button> </form>
-                    <form method="post" action="{{route('add-post')}}">
-                        @csrf
-                        <input type="text" name="title" placeholder="title">
-                        <input type="text" name="content" placeholder="content">
+    <form method="post" action="{{route('add-post')}}" class="flex justify-center">
+        <div class="flex flex-col md:w-3/4 gap-y-4 w-full">
+            @csrf
+            <input type="text" name="title" placeholder="post title" class="input input-bordered">
+            <textarea rows=3 type="text" name="content" placeholder="Write anything you want..." class="textarea textarea-bordered"></textarea>
+            <button type="submit" class="btn"> Submit</button>
+        </div>
+    </form>
 
-                        <button type="submit" class="btn"> Submit</button>
-                    </form>
 </x-app-layout>

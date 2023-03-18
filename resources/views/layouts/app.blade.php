@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme="night" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html id="html" data-theme="night" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,17 +29,17 @@
             <!-- Page Content -->
             <main>
                 <div class="py-12">
+                    <x-success-messsage>
 
+                    </x-success-messsage>
+
+                    <x-error-message>
+
+                    </x-error-message>
                     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
                         <div class=" overflow-hidden shadow-sm sm:rounded-xl">
-                            <x-success-messsage>
 
-                            </x-success-messsage>
-
-                            <x-error-message>
-
-                            </x-error-message>
                             <div class="p-6 bg-base-100 border border-base-300 min-h-screen">
                 {{ $slot }}
                             </div>

@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl leading-tight">
             {{ __('Settings') }}
         </h2>
     </x-slot>
@@ -14,6 +14,7 @@
                     <div class="flex justify-between"> Email: {{Auth::user()->email}} <a class="hover:text-primary"> Change </a></div>
                     <div class="flex justify-between"> Password: ****** <a class="hover:text-primary"> Change </a> </div>
                     <div> Created: {{Auth::user()->created_at->format('d/m/Y')}}</div>
+                    <div>Role: {{Auth::user()->role}} </div>
                     <div>
                     <a href="{{route('subscribe')}}">
                         @if(Auth::user()->is_subscribed==0)
