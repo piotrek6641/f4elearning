@@ -44,7 +44,7 @@ class PostController extends Controller
 
         ]);
 
-        return to_route('create-post');
+        return to_route('post-view')->with('success','post successfully added');
     }
 
     /**
@@ -86,10 +86,11 @@ class PostController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(Post $post)
+    public function destroy($id)
     {
-        //
+        Post::where('id',$id)->get()->first()->delete();
+        return to_route('post-view')->with('success','post successfully deleted');
     }
 }
