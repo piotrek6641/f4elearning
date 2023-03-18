@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Lesson;
+use App\Models\LessonComment;
 use Illuminate\Http\Request;
+
 
 class LessonsController extends Controller
 {
@@ -12,7 +14,8 @@ class LessonsController extends Controller
     {
         $category= Category::where('title',$title)->get();
         $lesson= Lesson::whereBelongsTo($category)->where('title',$lessontitle)->first();
-        return view('/lessons/show-lesson')->with('lesson',$lesson);
+        $comments= LessonComment::whereBelongsTo($lesson)->get();
+        return view('/lessons/show-lesson')->with('lesson',$lesson)->with('comments',$comments);
     }
     public function create()
     {
@@ -24,7 +27,6 @@ class LessonsController extends Controller
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'max:255'],
-
         ]);
 
         Lesson::create([
