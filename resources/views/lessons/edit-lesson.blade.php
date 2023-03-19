@@ -4,16 +4,15 @@
             {{ __('Edit Lesson') }}
         </h2>
     </x-slot>
-
+    <a href="{{route('admin')}}"> <x-back-button> </x-back-button> </a>
 
                     <form method="post" action="{{route('update-lesson',['title'=>$lesson->category->title, 'lesson'=>$lesson->title])}}">
-                        <div class="flex flex-col items-center">
+                        <div class="flex flex-col items-end w-full px-24 gap-y-4">
                         @method('PUT')
                         @csrf
-                        <x-input-sm type="text" value="{{$lesson->title}}" name="title" class="bg-base-100 w-1/2 mt-2 mb-2"> </x-input-sm>
-                        <x-textarea type="text"  name="description" class="bg-base-100 w-1/2 mt-2 mb-2 " rows="20" >
-                            {{$lesson->description}}
-                        </x-textarea>
+                        <input type="text" value="{{$lesson->title}}" name="title" class="input input-bordered w-full">
+                        <textarea type="text"  name="description" class="textarea textarea-bordered w-full" rows="15" >{{$lesson->description}}</textarea>
+                            <input type="text" value="{{$lesson->link}}" name="link" class="input input-bordered w-full">
                         <button type="sumbit" type="submit" class="btn"> Update</button>
                         </div>
                     </form>

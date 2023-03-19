@@ -11,7 +11,8 @@
                         @csrf
                         <input type="text" name="title" placeholder="title" class="input input-bordered">
                             <textarea rows=3 type="text" name="description" placeholder="description" class="textarea textarea-bordered"></textarea>
-                        <select class="select select-bordered" name="option">
+                            <input type="text" name="link" placeholder="add youtube embed link" class="input input-bordered">
+                            <select class="select select-bordered" name="option">
                             <option disabled selected>Select category:</option>
                             @foreach($categories as $category)
                                 <option value="{{$category->id}}">{{$category->title}} </option>

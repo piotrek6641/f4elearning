@@ -15,7 +15,8 @@ class Lesson extends Model
     protected $fillable=[
       'title',
       'description',
-      'category_id'
+      'category_id',
+        'link'
     ];
 
 }

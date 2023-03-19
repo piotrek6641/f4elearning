@@ -32,8 +32,8 @@ class LessonsController extends Controller
         Lesson::create([
             'title' => $request->title,
             'description' => $request->description,
-            'category_id' => $request->option
-
+            'category_id' => $request->option,
+            'link' => $request->link
         ]);
 
         return back()->with('success','lesson created successfully');
@@ -50,7 +50,7 @@ class LessonsController extends Controller
         $lesson= Lesson::whereBelongsTo($category)->where('title',$lessontitle)->first();
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
-            'description' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string', 'max:5024'],
 
         ],
         [
@@ -60,7 +60,7 @@ class LessonsController extends Controller
         $lesson->update([
             'title' => $request->title,
             'description' => $request->description,
-
+            'link' => $request->link
         ]);;
         return back()->with('success', 'Lesson updated successfully');
     }

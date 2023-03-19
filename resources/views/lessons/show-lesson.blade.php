@@ -19,8 +19,9 @@
 
                         <div class="flex flex-col">
                             <h1 class="text-3xl mb-8 mt-4"> {{$lesson->title}} </h1>
-                            <iframe  width="100%" class="bg-base-300 border-2 border-primary rounded-md mb-16 aspect-video   " src="https://www.youtube.com/embed/03nrv09T7bs?controls=0"> </iframe>
-                        {{$lesson->description}}
+                            <pre class="text-xl my-12 px-8 overflow-auto whitespace-pre-wrap"> {{$lesson->description}} </pre>
+                            <iframe  width="100%" class="bg-base-300 border-2 border-primary rounded-md mb-16 aspect-video" src="{{$lesson->link}}"> </iframe>
+
 
                             <!--Comment section-->
                             <span class="text-xl mt-16 mb-4"> Leave thought about that material:</span>
