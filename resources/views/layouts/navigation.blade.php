@@ -18,7 +18,7 @@
                     <x-nav-link :href="route('show-categories')" :active="request()->routeIs('show-categories')">
                         {{ __('Learn') }}
                     </x-nav-link>
-                    @if( Auth::user()->is_admin )
+                    @if( Auth::user()->role === "ADMIN" )
                         <x-nav-link :href="route('admin')" :active="request()->routeIs('admin')">
                             {{ __('Admin panel') }}
                         </x-nav-link>
