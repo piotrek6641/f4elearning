@@ -1,5 +1,6 @@
 <div>
-<form class="flex flex-col relative" method="post" wire:submit.prevent="createComment">
+    <span class="text-xl"> Consider leaving a comment ;)</span>
+<form class="flex flex-col relative mt-2" method="post" wire:submit.prevent="createComment">
     @csrf
     <textarea placeholder="Leave your thoughts... " name="text" value="{{old('text')}}" class="textarea textarea-bordered mb-2" wire:model.lazy="newComment"></textarea>
     @error('newComment') <span class="error">{{ $message }}</span> @enderror

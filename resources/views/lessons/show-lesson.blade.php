@@ -20,7 +20,7 @@
                             <pre class="text-xl my-12 px-8 overflow-auto whitespace-pre-wrap"> {{$lesson->description}} </pre>
                             <iframe  width="100%" class="bg-base-300 border-2 border-primary rounded-md mb-16 aspect-video" src="{{$lesson->link}}"> </iframe>
 
-
+                            <h2 class="text-2xl text-center mb-12"> Thank you for checking this lesson out, feel free to check out other content on the website</h2>
                             <!--Comment section-->
 
                                 <livewire:lesson-comment-component :lesson="$lesson"/>
