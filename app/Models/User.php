@@ -22,9 +22,13 @@ class User extends Authenticatable
         'email',
         'password',
         'is_subscribed',
-        'role'
+        'role',
+        'theme'
     ];
-
+    protected $attributes =
+        [
+          'theme'=>'night'
+        ];
     /**
      * The attributes that should be hidden for serialization.
      *

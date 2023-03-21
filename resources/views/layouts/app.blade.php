@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html id="html" data-theme="night" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html id="html" data-theme="{{Auth::user()->theme}}" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">

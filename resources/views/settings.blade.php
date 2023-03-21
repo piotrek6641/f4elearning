@@ -15,6 +15,7 @@
                     <div class="flex justify-between"> Password: ****** <a class="hover:text-primary"> Change </a> </div>
                     <div> Created: {{Auth::user()->created_at->format('d/m/Y')}}</div>
                     <div>Role: {{Auth::user()->role}} </div>
+                    <livewire:theme-change/>
                     <div>
                     <a href="{{route('subscribe')}}">
                         @if(Auth::user()->is_subscribed==0)
@@ -24,6 +25,7 @@
                         @endif
                     </a>
                     </div>
+
                 </div>
             </div>
         </div>
