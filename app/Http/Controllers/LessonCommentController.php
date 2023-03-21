@@ -38,7 +38,7 @@ class LessonCommentController extends Controller
     {
         $request->validate(
             [
-                'content'=>['required','max:255','min:10']
+                'text'=>['required','max:255','min:10']
             ]
         );
         LessonComment::create([

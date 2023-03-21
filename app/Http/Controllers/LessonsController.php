@@ -12,10 +12,9 @@ class LessonsController extends Controller
 {
     public function show($title,$lessontitle)
     {
-        $category= Category::where('title',$title)->get();
+        $category= Category::where('title',$title)->first();
         $lesson= Lesson::whereBelongsTo($category)->where('title',$lessontitle)->first();
-        $comments= LessonComment::whereBelongsTo($lesson)->get();
-        return view('/lessons/show-lesson')->with('lesson',$lesson)->with('comments',$comments);
+        return view('/lessons/show-lesson')->with('lesson',$lesson);
     }
     public function create()
     {
