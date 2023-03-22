@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,8 +16,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts= Post::all();
-        return view('/post/posts')->with('posts',$posts);
+        $posts= Post::latest()->get();
+        $categories = Category::all();
+        return view('/post/posts')->with(['posts'=>$posts,'categories'=>$categories]);
     }
 
     /**
@@ -26,7 +28,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('/post/create-post');
+        $categories = Category::all();
+        return view('/post/create-post', ['categories'=>$categories]);
     }
 
     /**
@@ -40,6 +43,7 @@ class PostController extends Controller
         Post::create([
             'title' => $request->title,
             'content' => $request->content,
+            'category_id' => $request->category,
             'author_id' => Auth::id()
 
         ]);
@@ -92,5 +96,18 @@ class PostController extends Controller
     {
         Post::where('id',$id)->get()->first()->delete();
         return to_route('post-view')->with('success','post successfully deleted');
+    }
+    public function search(Request $request)
+    {
+        $categories = Category::all();
+        if($request->category =="all")
+            return view('/post/posts')->with(['posts'=>Post::latest()->get(),'categories'=>$categories]);
+        $request->validate([
+           'category' => 'required'
+        ]);
+
+        $cat = $request->category;
+        $posts = Post::where('category_id',$cat)->latest()->get();
+        return view('/post/posts')->with(['posts'=>$posts,'categories'=>$categories, 'cat' =>$cat]);
     }
 }

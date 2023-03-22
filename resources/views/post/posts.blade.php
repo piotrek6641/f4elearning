@@ -4,23 +4,36 @@
             {{ __('Post Section') }}
         </h2>
     </x-slot>
-
-            <form method="get" action="{{route('create-post')}}"> <button class="btn mt-2 mb-6"> + add new post</button> </form>
-
-
+    <div class="flex justify-between  mt-2 mb-6 flex-wrap gap-y-4">
+            <form method="get" action="{{route('create-post')}}"> <button class="btn"> + add new post</button> </form>
+            <form method="get" action="{{route('search-posts')}}">
+                <select class="select select-bordered" name="category">
+                    <option selected disabled> Select Category</option>
+                    <option value="all"> Show all </option>
+                    @foreach($categories as $category)
+                        <option value="{{$category->id}}" @empty($cat) @else {{ $cat == $category->id ? "Selected" :"" }} @endempty> {{$category->title }}</option>
+                    @endforeach
+                </select>
+                <button class="btn" > Search </button>
+            </form>
+    </div>
+    @if($posts->isEmpty())
+        OOps, no post yet. Create first one and start discussion
+    @endif
                     @foreach($posts as $post)
 
-                        <div class="w-full border-2 border-neutral rounded  grid grid-cols-3 p-2 mb-5">
+                        <div class="w-full border-2 border-neutral rounded  grid grid-cols-2 md:grid-cols-4 p-2 mb-5">
                             <div class="bold"> Author: <div class="font-bold inline"> {{$post->author->name}} </div> </div>
-                            <div class="text-end"> Created: {{$post->created_at->diffForHumans()}}</div>
+                            <div class="text-right md:text-start"> #{{$post->category->title}}</div>
+                            <div class="text-left"> Created: {{$post->created_at->diffForHumans()}}</div>
                             <div class="text-end"> Updated: {{$post->updated_at->diffForHumans()}}</div>
 
-                       <div class="col-span-4">
+                       <div class="col-span-2 md:col-span-4 ">
                            <form method="get" action="{{route('show-post',$post->id)}}"> <button type="submit"><p class="text-3xl text-secondary">{{$post->title}}</p> </button> </form>
                            </div>
 
-                               <div class="col-span-4">{{\Illuminate\Support\Str::limit($post->content,50)}}</div>
-                            <div class="col-span-3 flex justify-end">
+                               <div class="col-span-2 md:col-span-4 ">{{\Illuminate\Support\Str::limit($post->content,50)}}</div>
+                            <div class="col-span-2 md:col-span-4 flex justify-end">
                                 10
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="ml-1 mr-3 bi bi-chat-left-text-fill self-center" viewBox="0 0 16 16">
                                 <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4.414a1 1 0 0 0-.707.293L.854 15.146A.5.5 0 0 1 0 14.793V2zm3.5 1a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5z"/>

@@ -37,6 +37,7 @@ Route::middleware('auth',)->group( function ()
     Route::prefix('post')->group(function()
     {
         Route::get('/', [PostController::class,'index'])->name('post-view');
+        Route::get('/search',[PostController::class,'search'])->name('search-posts');
         Route::get('/create-post', [PostController::class,'create'] )->name('create-post');
         Route::post('/create-post',[PostController::class,'store'])->name('add-post');
         Route::get('/{id}',[PostController::class,'show','id'])->name('show-post');
@@ -45,13 +46,11 @@ Route::middleware('auth',)->group( function ()
 
     Route::prefix('learn')->group(function()
     {
-
         Route::get('/',[CategoriesController::class, 'index'])->name('show-categories');
         Route::get('/{title}',[CategoriesController::class, 'showlessons','title'])->name('show-lessons');
         Route::get('/{title}/{lesson}',[LessonsController::class, 'show','title','lesson'])->name('show-lesson');
         Route::get('/{title}/{lesson}/edit',[LessonsController::class, 'edit' ,'title','lesson'])->name('edit-lesson')->middleware('IsAdmin');
         Route::put('/{title}/{lesson}',[LessonsController::class, 'update','title','lesson'])->name('update-lesson')->middleware('IsAdmin');
-
         Route::post('/{title}/{lesson}',[LessonCommentController::class,'store'])->name('add-lesson-comment');
         Route::get('/{title}/{lesson}/{id}',[LessonCommentController::class,'show','title','lesson','id'])->name('lesson-comment');
         Route::delete('/{title}/{lesson}',[LessonCommentController::class,'destroy','comment-id'])->name('remove-lesson-comment');
