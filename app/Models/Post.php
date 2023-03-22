@@ -12,11 +12,16 @@ class Post extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function Category()
+    {
+        return $this->belongsTo(Category::class);
+    }
     protected $fillable=
         [
           'content',
             'title',
-            'author_id'
+            'author_id',
+            'category_id'
         ];
 }
 

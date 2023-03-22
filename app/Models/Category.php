@@ -11,6 +11,9 @@ class Category extends Model
     public function lessons(){
         return $this->hasMany(Lesson::class);
     }
+    public function posts(){
+        return $this->hasMany(Post::class);
+    }
     protected $fillable=
         [
           'title'

@@ -10,6 +10,11 @@
             @csrf
             <input type="text" name="title" placeholder="post title" class="input input-bordered">
             <textarea rows=3 type="text" name="content" placeholder="Write anything you want..." class="textarea textarea-bordered"></textarea>
+            <select class="select select-bordered" name="category">
+                @foreach($categories as $category)
+                <option value="{{$category->id}}">{{$category->title}} </option>
+                @endforeach
+            </select>
             <button type="submit" class="btn"> Submit</button>
         </div>
     </form>
