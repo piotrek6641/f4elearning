@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-base-content leading-tight">
             {{ __('Post') }}
         </h2>
     </x-slot>
@@ -11,8 +11,8 @@
 
                 </x-back-button>
             </form>
-@if(Auth::user()->is_admin)
-    <form method="post" action="{{route('remove-post',$post->id)}}"> @csrf <button type="submit"> remove post </button> </form>
+@if(Auth::user()->is_admin || Auth::user()->id === $post->author->id)
+    <form method="post" action="{{route('remove-post',$post->id)}}" class="text-error text-end"> @csrf <button type="submit">X</button> </form>
     @endif
                         <div class="w-full  grid grid-cols-4 p-2 mb-2">
                             <div class="col-span-4 text-right flex justify-end mb-5 text-gray-500">
@@ -49,7 +49,7 @@
                     </div>
 
                     <div class="mt-5 mb-2  text-xl"> Comment section </div>
-                    <div class="w-full border border-black p-2  rounded-lg flex flex-col">
+                    <div class="w-full border border-neutral p-2  rounded-lg flex flex-col">
                         <div class="flex justify-between mb-1 text-gray-500"> <div class="">Author:</div>  <div> 2 sec ago </div> </div>
                         <div> </div>
                         <div>First Comment </div>

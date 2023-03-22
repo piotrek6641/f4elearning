@@ -17,7 +17,7 @@ class ThemeChange extends Component
     {
         if($this->user->theme =="night")
         {
-            $this->user->update(['theme'=>"light"]);
+            $this->user->update(['theme'=>"corporate"]);
         }
         else
         {
