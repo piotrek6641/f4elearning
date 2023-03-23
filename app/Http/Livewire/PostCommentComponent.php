@@ -28,7 +28,7 @@ class PostCommentComponent extends Component
     {
         $this->validate();
         $createdComment = PostComment::create([
-           'content'=>$this->newComment,
+            'content'=>$this->newComment,
             'user_id'=>Auth::id(),
             'post_id'=>$this->post->id
         ]);
