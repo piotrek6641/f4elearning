@@ -25,7 +25,10 @@
                     {{ $comment->User->name }}:
                 </span>
                 <span> {{$comment->content}} </span>
+
+                <livewire:likes :likeable='$comment'/>
             </div>
+
         </div>
     </div>
 @endforeach

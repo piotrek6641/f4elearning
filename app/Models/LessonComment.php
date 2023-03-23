@@ -4,9 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Contracts\Likeable;
+use App\Models\Concerns\Likes;
 
-class LessonComment extends Model
+class LessonComment extends Model implements Likeable
 {
+    use Likes;
     use HasFactory;
     public function  Lesson()
     {
