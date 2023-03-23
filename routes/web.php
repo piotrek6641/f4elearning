@@ -11,6 +11,8 @@ use App\Http\Controllers\EmailController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use \App\Http\Controllers\LessonCommentController;
+use App\Http\Controllers\LikeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -74,8 +76,8 @@ Route::middleware(['auth','IsAdmin'])->group(function(){
             Route::get('/{id}',[Users1Controller::class,'edit','id'])->name('users.edit');
             Route::post('/{id}/update',[Users1Controller::class,'update'])->name('users.update');
             //Route::put('/users/{id}', [UserController::class,'ban','id'])->name('ban');
-            Route::get('/search',[UserController::class,'Search'])->name('search');
-            Route::get('/filter',[UserController::class,'Filter'])->name('filter');
+            Route::get('/search/for',[UserController::class,'Search'])->name('search');
+            Route::get('/filter/by',[UserController::class,'Filter'])->name('filter');
         });
 
         Route::get('edit-category',[CategoriesController::class,'edit'])->name('edit-category');

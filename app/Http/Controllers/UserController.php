@@ -26,16 +26,16 @@ class UserController extends Controller
         if($request->option =="id")
         {
             $users = User::where('id', $request->text)->paginate(10);
-            return view('users.index')->with('users',$users);
+            return view('users/index')->with('users',$users);
         }
         if($request->option == "name") {
             $users = User::where('name', 'LIKE', $request->text . '%')->paginate(10);
-            return view('users.index')->with('users',$users);
+            return view('users/index')->with('users',$users);
         }
         if($request->option=="email")
         {
             $users = User::where('email', 'LIKE', $request->email . '%')->paginate(10);
-            return view('users.index')->with('users',$users);
+            return view('users/index')->with('users',$users);
         }
         else
         {

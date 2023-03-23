@@ -9,7 +9,6 @@
         <a href="{{route('admin')}}"> <x-back-button> </x-back-button> </a>
         <div class="form-control">
             <form method="get" action="{{route('search')}}">
-                @csrf
                 <div class="input-group pt-5">
                     <select class="select select-bordered" name="option">
                         <option disabled selected>Search By:</option>
@@ -24,7 +23,6 @@
             </form>
         </div>
         <form method="get" action="{{route('filter')}}">
-            @csrf
             <div class="input-group pt-5 pb-10">
                 <select class="select select-bordered" name="option">
                     <option disabled selected>Order By:</option>
