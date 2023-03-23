@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\LessonComment;
+use App\Models\PostComment;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class LessonCommentPolicy
+class PostCommentPolicy
 {
     use HandlesAuthorization;
 
@@ -25,10 +25,10 @@ class LessonCommentPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\LessonComment  $lessonComment
+     * @param  \App\Models\PostComment  $postComment
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, LessonComment $lessonComment)
+    public function view(User $user, PostComment $postComment)
     {
         //
     }
@@ -48,10 +48,10 @@ class LessonCommentPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\LessonComment  $lessonComment
+     * @param  \App\Models\PostComment  $postComment
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, LessonComment $lessonComment)
+    public function update(User $user, PostComment $postComment)
     {
         //
     }
@@ -60,22 +60,22 @@ class LessonCommentPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\LessonComment  $lessonComment
+     * @param  \App\Models\PostComment  $postComment
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, LessonComment $lessonComment)
+    public function delete(User $user, PostComment $postComment)
     {
-        return ($user->id === $lessonComment->user_id || $user->role==="ADMIN");
+        return ($user->id === $postComment->user_id || $user->role==="ADMIN");
     }
 
     /**
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\LessonComment  $lessonComment
+     * @param  \App\Models\PostComment  $postComment
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, LessonComment $lessonComment)
+    public function restore(User $user, PostComment $postComment)
     {
         //
     }
@@ -84,10 +84,10 @@ class LessonCommentPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\LessonComment  $lessonComment
+     * @param  \App\Models\PostComment  $postComment
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, LessonComment $lessonComment)
+    public function forceDelete(User $user, PostComment $postComment)
     {
         //
     }

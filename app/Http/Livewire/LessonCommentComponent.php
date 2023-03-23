@@ -33,7 +33,6 @@ class LessonCommentComponent extends Component
     {
         $comment =LessonComment::find($comment_id);
         $this->authorize('delete',$comment);
-        $comment = LessonComment::find($comment_id);
         $this->comments = $this->comments->except($comment_id);
         $comment->delete();
     }
