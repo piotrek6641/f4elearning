@@ -26,7 +26,6 @@
                 </span>
                 <span> {{$comment->content}} </span>
 
-                <livewire:likes :likeable='$comment'/>
             </div>
 
         </div>

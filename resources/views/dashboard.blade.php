@@ -11,7 +11,7 @@
     <p class="text-2xl text-center"> If so explore available categories now </p>
     <livewire:categories/>
     <p class="text-2xl text-center mt-6"> Or jump straight into our discussion section </p>
-    <a href="{{ route('post-view') }}" class="text-center text-2xl border border-primary mt-2 w-full p-2 rounded-md hover:bg-primary-focus hover:text-neutral hover:border-base-200 cursor-pointer">
+    <a href="{{ route('post-view') }}" class="text-center text-2xl border border-primary mt-2 w-full p-2 rounded-md hover:bg-primary-focus hover:text-primary-content hover:border-base-200 cursor-pointer">
          Posts
     </a>
         </div>

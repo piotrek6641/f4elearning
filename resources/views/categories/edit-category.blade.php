@@ -6,7 +6,7 @@
     </x-slot>
     <a href="{{route('admin')}}"> <x-back-button> </x-back-button> </a>
     <div class="flex justify-center">
-                        <form method="post" action="{{route('update-category')}}">
+                        <form method="post" action="{{route('update-category')}}" class="w-3/4 flex flex-col">
                             <div class="flex flex-col gap-y-4 mt-8">
                             @csrf
                             <select class="select select-bordered" name="option">
